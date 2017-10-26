@@ -2,7 +2,7 @@
 
 clear;clc;
 
-% x(t) Initial condition
+% Boundary Condition
    t0 = 0;
    x0 = 0;
 xdot0 = 0;

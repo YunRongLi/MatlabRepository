@@ -2,7 +2,7 @@
 
 clear;clc;
 
-%  Initial condition
+%  Boundary Condition
             t = [0;
                  2;
                  3;
@@ -16,7 +16,6 @@ clear;clc;
                0,1.0,-0.5,0;
                0,1.0, 0.5,0;];
             
-% Determin Cubi Polynomial Matrix Coefficient Vector Seg1
 for seg = 1:1:3
             [xa,xb,xc,xd] = CubiPolynomialVector(t(seg,1),t(seg+1,1),postion(1,seg),velocity(1,seg),postion(1,seg+1),velocity(1,seg+1));
             [ya,yb,yc,yd] = CubiPolynomialVector(t(seg,1),t(seg+1,1),postion(2,seg),velocity(2,seg),postion(2,seg+1),velocity(2,seg+1));

@@ -34,34 +34,42 @@ for seg = 1:1:3
 angular_acceleration = @(t)                    3*phia*t + 2*phib;
 
       t_interval = linspace(t(seg,1),t(seg+1,1));
-      
+   
       subplot(3,1,1)
+      title('Position');
+      xlabel('t(s)');   
       plot(t_interval,x_position(t_interval),'b');
       hold on
       plot(t_interval,y_position(t_interval),'g');
       hold on
       plot(t_interval,angle(t_interval),'r');
       hold on
+      legend({'x(t)';'y(t)';'$\phi(t)$'},'Interpreter','latex','Location','northwest','FontSize',16);
       grid
-      
+   
       subplot(3,1,2)
+      title('Velocity');
+      xlabel('t(s)');
       plot(t_interval,x_velocity(t_interval),'b');
       hold on
       plot(t_interval,y_velocity(t_interval),'g');
       hold on
       plot(t_interval,angular_velocity(t_interval),'r');
       hold on
+      legend({'$\dot{x}(t)$';'$\dot{y}(t)$';'$\dot{\phi}(t)$'},'Interpreter','latex','FontSize',16);
       grid
       
       subplot(3,1,3)
+      title('Acceleration');
+      xlabel('t(s)');
       plot(t_interval,x_acceleration(t_interval),'b');
       hold on
       plot(t_interval,y_acceleration(t_interval),'g');
       hold on
       plot(t_interval,angular_acceleration(t_interval),'r');
       hold on
+      legend({'$\ddot{x}(t)$';'$\ddot{y}(t)$';'$\ddot{\phi}(t)$'},'Interpreter','latex','FontSize',16);
       grid
-    
 end
 
 

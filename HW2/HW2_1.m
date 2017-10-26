@@ -18,19 +18,19 @@ xdot1 = 0;
     velocity = @(t)     3*a*t.^2 + 2*b*t + c;
 acceleration = @(t)              3*a*t + 2*b;
 
-t_interval = linspace(0,1.5);
+t_interval = linspace(0,1.0);
 
 subplot(3,1,1);
 plot(t_interval,position(t_interval));
 xlabel('Time(s)')
 ylabel('x(t)')
-axis([-inf,inf,0,4]);
+axis([-inf,inf,0,3.5]);
 
 subplot(3,1,2);
 plot(t_interval,velocity(t_interval));
 xlabel('Time(s)')
 ylabel('v(t)')
-axis([-inf,inf,-15,7]);
+axis([-inf,inf,0,7]);
 
 subplot(3,1,3);
 plot(t_interval,acceleration(t_interval));

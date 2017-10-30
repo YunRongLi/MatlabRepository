@@ -1,4 +1,4 @@
-% HW2_2
+% Robotics and Vision Homework02_01 Trajetory planning
 
 clear;clc;
 

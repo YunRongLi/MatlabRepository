@@ -21,54 +21,78 @@ for seg = 1:1:3
             [ya,yb,yc,yd] = CubiPolynomialVector(t(seg,1),t(seg+1,1),postion(2,seg),velocity(2,seg),postion(2,seg+1),velocity(2,seg+1));
     [phia,phib,phic,phid] = CubiPolynomialVector(t(seg,1),t(seg+1,1),postion(3,seg),velocity(3,seg),postion(3,seg+1),velocity(3,seg+1));
     
-          x_position = @(t)xa*t.^3 + xb*t.^2 + xc*t + xd;
-          x_velocity = @(t)      3*xa*t.^2 + 2*xb*t + xc;
-      x_acceleration = @(t)                3*xa*t + 2*xb;
+          x_position = @(t)xa*power(t,3) + xb*power(t,2) + xc*t + xd;
+          x_velocity = @(t)3*xa*power(t,2) + 2*xb*t + xc;
+      x_acceleration = @(t)3*xa*t + 2*xb;
  
-          y_position = @(t)ya*t.^3 + yb*t.^2 + yc*t + yd;
-          y_velocity = @(t)      3*ya*t.^2 + 2*yb*t + yc;
-      y_acceleration = @(t)                3*ya*t + 2*yb;
+          y_position = @(t)ya*power(t,3) + yb*power(t,2) + yc*t + yd;
+          y_velocity = @(t)3*ya*power(t,2) + 2*yb*t + yc;
+      y_acceleration = @(t)3*ya*t + 2*yb;
 
-               angle = @(t)phia*t.^3 + phib*t.^2 + phic*t + phid;
-    angular_velocity = @(t)        3*phia*t.^2 + 2*phib*t + phic;
-angular_acceleration = @(t)                    3*phia*t + 2*phib;
+               angle = @(t)phia*power(t,3) + phib*power(t,2) + phic*t + phid;
+    angular_velocity = @(t)3*phia*power(t,2) + 2*phib*t + phic;
+angular_acceleration = @(t)3*phia*t + 2*phib;
 
       t_interval = linspace(t(seg,1),t(seg+1,1));
    
-      subplot(3,1,1)
+      subplot(3,2,1)
       title('Position');
-      xlabel('t(s)');   
+      xlabel('t(sec)');
+      ylabel('Position(m)');
       plot(t_interval,x_position(t_interval),'b');
       hold on
       plot(t_interval,y_position(t_interval),'g');
       hold on
+      legend({'x(t)';'y(t)'},'Interpreter','latex','Location','northwest','FontSize',16);
+      grid
+      
+      subplot(3,2,2)
+      title('Angle');
+      xlabel('t(sec)');
+      ylabel('Angle(rad)');
       plot(t_interval,angle(t_interval),'r');
       hold on
-      legend({'x(t)';'y(t)';'$\phi(t)$'},'Interpreter','latex','Location','northwest','FontSize',16);
+      legend({'$\phi(t)$'},'Interpreter','latex','Location','northwest','FontSize',16);
       grid
-   
-      subplot(3,1,2)
+      
+      subplot(3,2,3)
       title('Velocity');
-      xlabel('t(s)');
+      xlabel('t(sec)');
+      ylabel('Velocity(m/sec)');
       plot(t_interval,x_velocity(t_interval),'b');
       hold on
       plot(t_interval,y_velocity(t_interval),'g');
       hold on
-      plot(t_interval,angular_velocity(t_interval),'r');
-      hold on
-      legend({'$\dot{x}(t)$';'$\dot{y}(t)$';'$\dot{\phi}(t)$'},'Interpreter','latex','FontSize',16);
+      legend({'$\dot{x}(t)$';'$\dot{y}(t)$'},'Interpreter','latex','FontSize',16);
       grid
       
-      subplot(3,1,3)
+      subplot(3,2,4)
+      title('Angular Velocity');
+      xlabel('t(sec)');
+      ylabel('Angular Velocity(rad/sec)');
+      plot(t_interval,angular_velocity(t_interval),'r');
+      hold on
+      legend({'$\dot{\phi}(t)$'},'Interpreter','latex','FontSize',16);
+      grid
+      
+      subplot(3,2,5)
       title('Acceleration');
-      xlabel('t(s)');
+      xlabel('t(sec)');
+      ylabel('Acceleration(m/sec^2)');
       plot(t_interval,x_acceleration(t_interval),'b');
       hold on
       plot(t_interval,y_acceleration(t_interval),'g');
       hold on
+      legend({'$\ddot{x}(t)$';'$\ddot{y}(t)$'},'Interpreter','latex','FontSize',16);
+      grid
+      
+      subplot(3,2,6)
+      title('Angular Acceleration');
+      xlabel('t(sec)');
+      ylabel('Angular Acceleration(rad/sec^2)');
       plot(t_interval,angular_acceleration(t_interval),'r');
       hold on
-      legend({'$\ddot{x}(t)$';'$\ddot{y}(t)$';'$\ddot{\phi}(t)$'},'Interpreter','latex','FontSize',16);
+      legend({'$\ddot{\phi}(t)$'},'Interpreter','latex','FontSize',16);
       grid
 end
 

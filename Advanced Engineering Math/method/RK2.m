@@ -64,6 +64,7 @@ function output = RK2(varargin)
                 
             output = [y;ydot];
         end
+    end
 end
 
 

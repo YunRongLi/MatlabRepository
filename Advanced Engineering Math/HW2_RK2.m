@@ -13,10 +13,10 @@ x2dot = @(y,ydot)20 - 2 * ydot - 20 * y;
 
 Output = RK2(x1dot,x2dot,y(1,1),ydot(1,1),interval,final_time);
 
-figure(1)
+figure(5)
 plot(t,Output(:,1));
 
-figure(2)
+figure(6)
 plot(t,Output(:,2));
 
 

@@ -15,6 +15,7 @@ Output = MEM(x1dot,x2dot,y(1,1),ydot(1,1),interval,final_time);
 
 figure(1)
 plot(t,Output(:,1));
+hold on
 
 figure(2)
 plot(t,Output(:,2));
